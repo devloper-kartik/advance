@@ -22,7 +22,10 @@ class Student{
     }
 
     isEgligible(){
-        if(this.marks>=40) return true;
+        if(this.marks>=40) return ()=>{
+            if(this.age>=21) return true;
+            return false;
+        };
         return false;
     }
 
@@ -37,4 +40,3 @@ let s3 = new Student("vivek",20,12345,43);
 let s4 = new Student("xyz",18,12434,39);
 let s5 = new Student("pqr",25,10234,20);
 
-// static variable was not working so I used prototype 
