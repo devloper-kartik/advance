@@ -5,7 +5,7 @@ const posts=[
     {title:"Post two", body:"This is post two",createdAt:Date.now()}
 ];
 
-function getPost(){
+const getPost = async ()=>{
     setTimeout(()=>{
         let out = "";
         posts.forEach((post)=>{
@@ -14,9 +14,8 @@ function getPost(){
         element.innerHTML=out;
     },1000);
 }
-getPost();
 
-function createPost(post){
+const createPost = async ()=>{
     return new Promise((resolve,reject)=>{
         setTimeout(()=>{
             posts.push(post);
@@ -27,7 +26,7 @@ function createPost(post){
     });
 }
 
-const deletePost = ()=>{
+const deletePost = async ()=>{
     return new Promise((resolve,reject)=>{
         setTimeout(()=>{
             if(!posts.length==0){
@@ -40,29 +39,3 @@ const deletePost = ()=>{
     });
 }
 
-deletePost().then(getPost).catch(e=>console.log(e));
-deletePost().then(getPost).catch(e=>console.log(e));
-deletePost().then(getPost).catch(e=>console.log(e));
-
-
-//promise all
-const promise1 = Promise.resolve("hello");
-const promise2 = 10;
-const promise3 = new Promise((resolve,reject)=>{
-    setTimeout(resolve,2000,"goodbye");
-});
-
-Promise.all([promise1,promise2,promise3]).then(value=>console.log(value));
-
-const User = {
-    username:"kartik",
-    lastActiveTime : '10 sept',
-}
-
-updateLastActiveTime = ()=>{
-    return new Promise((resolve,reject)=>{
-        setTimeout(()=>{
-            User.lastActiveTime = new Date.getTime();
-        },2000);
-    });
-}
